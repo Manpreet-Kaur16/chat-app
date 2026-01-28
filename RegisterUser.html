@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegisterUser</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex items-center justify-center font-sans">
+    <div class="bg-white shadow-xl rounded-2xl w-full max-w-md p-8 ">
+        <h2 class="font-bold text-2xl text-center mb-6">Register User</h2>
+
+        <!-- Username -->
+        <div class="mb-5">
+            <label class="block font-medium mb-1">Username</label>
+            <input type="text"
+                class="bg-gray-100 border rounded-lg p-3 w-full focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+
+        <!-- Password -->
+        <div class="mb-5">
+            <label class="block font-medium mb-1">Password</label>
+            <input type="password"
+                class="bg-gray-100 border rounded-lg p-3 w-full focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-5">
+            <label class="font-medium mb-1">Email</label>
+            <input type="email" class="bg-gray-100 border rounded-lg w-full p-3 focus:bg-blue-100 focus:outline">
+        </div>
+
+        <!-- terms and conditions -->
+        <div class="flex items-center gap-2 mb-5">
+            <input type="checkbox" class="h-4 w-4">
+            <label class="text-sm">I agree terms & conditions</label>
+        </div>
+
+        <!-- register button -->
+
+        <button class="border rounded-lg bg-gray-400 text-center w-full p-3 text-white">Register</button>
+
+    </div>
+</body>
+
+</html>
