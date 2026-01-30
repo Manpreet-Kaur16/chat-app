@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetAllUserList</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex justify-center items-center">
+    <div class="bg-white rounded-lg shadow-md w-full max-w-6xl p-6">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3"><button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                        <path d="m12 19-7-7 7-7" />
+                        <path d="M19 12H5" />
+                    </svg>
+                </button>
+
+                <h1 class="font-bold text-2xl">Online Users</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="text" placeholder="search" class=" border border-gray-200 rounded-lg p-3">
+                <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                        <path d="M16 16h5v5" />
+                    </svg></button>
+                <button title="Start New Chat"
+                    class="p-2.5 text-green-100 bg-green-600 rounded-lg transition-all duration-200 transform hover:scale-105"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-square-plus-icon lucide-square-plus">
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="M8 12h8" />
+                        <path d="M12 8v8" />
+                    </svg></button>
+                <button title="log-out"
+                    class="p-2.5 text-gray-600 hover:text-red-600 bg-gray-100 hover:bg-red-50 rounded-lg transition-all duration-200 transform hover:scale-105"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-log-out-icon lucide-log-out">
+                        <path d="m16 17 5-5-5-5" />
+                        <path d="M21 12H9" />
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    </svg></button>
+            </div>
+        </div>
+        <div class="text-sm text-gray-600 text-center py-6 grid grid-cols-2 gap-4">
+            <!-- No Users Online -->
+
+            <div class="space-y-3 flex justify-between">
+                <div class="bg-white shadow-sm rounded-lg w-full max-w-md p-8 mt-4 flex gap-4 hover:">
+                    <div class="bg-blue-400 rounded-full p-2 h-10 w-10 text-white font-bold text-center">M</div>
+                    <div>
+                        <h3 class="text-lg font-medium">Manpreet</h3>
+                        <p class="text-green-400 font-medium">Active now</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div
+                    class=" bg-white border-gray-100 rounded-xl shadow-sm hover: shadow-md transition-all duration-200 overflow-hidden group">
+                    <div class="bg-white shadow-sm rounded-lg w-full max-w-md p-8 mt-4 flex gap-4">
+                        <div class="bg-blue-400 rounded-full p-2 h-10 w-10 text-white font-bold text-center">H</div>
+                        <div
+                            class="absolute -bottom-1 -right-1 h-4 w-4 bg-green-400 rounded-full border-2 border-white">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium">Harpreet</h3>
+
+                            <p class="text-green-400 font-medium">Active now</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="px-4 py-3 border-t border-gray-200 bg-gray-50 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200">
+                        <button
+                            class="w-full text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center justify-center"><svg
+                                class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                                </path>
+                            </svg>send
+                            messages</button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden group">
+                <div class="p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="relative flex-shrink-0">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-lg font-semibold">J</span>
+                                </div>
+                                <div
+                                    class="absolute -bottom-1 -right-1 h-4 w-4 bg-green-400 rounded-full border-2 border-white">
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 truncate">jaskaransingh</h3>
+                                <p class="text-sm text-green-500 font-medium flex items-center"><span
+                                        class="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>Active
+                                    now</p>
+                            </div>
+                        </div><button
+                            class="flex-shrink-0 p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors"
+                            fdprocessedid="cpp5t"><svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                </path>
+                            </svg></button>
+                    </div>
+                </div>
+                <div
+                    class="px-4 py-3 bg-gray-50 border-t border-gray-100 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200">
+                    <button
+                        class="w-full text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center justify-center"
+                        fdprocessedid="1zcfqn"><svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                            </path>
+                        </svg>Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

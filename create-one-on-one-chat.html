@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-on-OneChat</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex justify-center items-center flex-col gap-4">
+    <div class="bg-white shadow-xl rounded-lg w-full max-w-md p-8">
+        <div class="flex gap-8 justify-between mb-6">
+            <h2 class="text-2xl font-medium">Your chats</h2>
+            <div class="flex gap-2">
+                <button title="log-out"
+                    class="p-2.5 text-gray-600 hover:text-red-600 bg-gray-100 hover:bg-red-50 rounded-lg transition-all duration-200 transform hover:scale-105"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-log-out-icon lucide-log-out">
+                        <path d="m16 17 5-5-5-5" />
+                        <path d="M21 12H9" />
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    </svg></button>
+                <button title="Start New Chat"
+                    class="p-2.5 text-gray-600 hover:text-indigo-600 bg-gray-100 hover:bg-indigo-50 rounded-lg transition-all duration-200 transform hover:scale-105"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-square-plus-icon lucide-square-plus">
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="M8 12h8" />
+                        <path d="M12 8v8" />
+                    </svg></button>
+            </div>
+        </div>
+        <div class="mb-5">
+            <input type="text" placeholder=" 🔍 Search" class="border rounded-lg p-3 w-full">
+        </div>
+    </div>
+    <div class="bg-white shadow-xl rounded-lg w-full max-w-md p-8">
+        <h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-message-circle-more-icon lucide-message-circle-more">
+                <path
+                    d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                <path d="M8 12h.01" />
+                <path d="M12 12h.01" />
+                <path d="M16 12h.01" />
+            </svg> No chats Available yet</h3>
+
+        <div class="space-y-3 flex">
+            <div class="bg-white shadow-sm rounded-lg w-full max-w-md p-8 mt-4 flex gap-4">
+                <div class="bg-blue-400 rounded-full p-2 h-10 w-10 text-white font-bold text-center">M</div>
+                <div>
+                    <h3 class="text-2xl text-blue-500 font-bold">Manpreet</h3>
+                    <p>Direct Message</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
