@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queryperameter</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <script>
+        let urlString = window.location.search;
+        console.log("urlString", urlString);
+
+        let urlParams = new URLSearchParams(urlString);
+        urlParams.set("name", "Manpreet");
+        urlParams.set("age", "35");
+        urlParams.set("city", "woodstock");
+        console.log("urlParams after set", urlParams);
+        console.log("urlParams after set", urlParams.toString());
+        window.location.search = urlParams.toString();
+
+        let queryparamObj = Object.fromEntries(urlParams.entries());
+        console.log("queryparamObj", queryparamObj);
+    </script>
+</body>
+
+</html>
