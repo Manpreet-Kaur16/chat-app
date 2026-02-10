@@ -24,7 +24,9 @@ async function loginUser(userData) {
             })
         let jsondata = await apiresponse.json();
         console.log(jsondata);
-
+        let accessToken = jsondata.data.accessToken;
+        console.log(accessToken);
+        localStorage.setItem("accessToken", accessToken);
     }
     catch (error) {
 

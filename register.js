@@ -3,8 +3,10 @@ let passwordElement = document.getElementById("password");
 let emailElement = document.getElementById("email");
 let registerButtonElement = document.getElementById("registerButton");
 let containerElement = document.getElementById("container");
+let errorMessagesElement = document.getElementById("errorMessages")
 
 registerButtonElement.addEventListener("click", () => {
+    errorMessagesElement.innerHTML = "";
 
     let userData = {
         username: usernameElement.value,
@@ -28,9 +30,22 @@ async function registerUser(userData) {
                 body: JSON.stringify(userData),
             })
         let jsondata = await apiResponse.json();
-        console.log(jsondata);
+        if (!apiResponse.ok) {
+            if (jsondata.errors) {
+                displayErrors(jsondata.errors);
+            } else {
+                displayErrors([{ message: jsondata.message }]);
+            }
+            return;
+        }
+        errorMessagesElement.innerHTML =
+            `<p class="text-green-600 font-bold">Registered Successfully</p>`;
 
-        let html = "";
+        console.log("Success:", jsondata);
+
+
+
+        /*let html = "";
         html += `<h2 class="font-bold text-red-600">Errors</h2>
         <ul>
             <li class="font-bold text-red-600">username</li>
@@ -38,11 +53,32 @@ async function registerUser(userData) {
             <li class="font-bold text-red-600">email</li>
         </ul>`
 
-        containerElement.innerHTML = html;
+        containerElement.innerHTML = html;*/
     }
     catch (error) {
 
         console.log("error")
     }
+
+    function displayErrors(errors) {
+        console.log(errors);
+        let html = errors.map(error => {
+            let errorMessage = "";
+            if (error.email) {
+                errorMessage = error.email;
+            }
+            else if (error.password) {
+                errorMessage = error.password;
+            }
+            else {
+                errorMessage = error.username;
+            }
+            return `<p class="text-red-600 text-sm mt-1">${errorMessage}</p>`
+        }).join("");
+
+        errorMessagesElement.innerHTML = html;
+
+    }
+
 }
 
