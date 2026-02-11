@@ -34,26 +34,16 @@ async function registerUser(userData) {
             if (jsondata.errors) {
                 displayErrors(jsondata.errors);
             } else {
-                displayErrors([{ message: jsondata.message }]);
+                displayErrors([{ message: jsondata.data.errorMessage }]);
             }
             return;
         }
         errorMessagesElement.innerHTML =
             `<p class="text-green-600 font-bold">Registered Successfully</p>`;
+        window.location = "login.html"
 
         console.log("Success:", jsondata);
 
-
-
-        /*let html = "";
-        html += `<h2 class="font-bold text-red-600">Errors</h2>
-        <ul>
-            <li class="font-bold text-red-600">username</li>
-            <li class="font-bold text-red-600">password</li>
-            <li class="font-bold text-red-600">email</li>
-        </ul>`
-
-        containerElement.innerHTML = html;*/
     }
     catch (error) {
 

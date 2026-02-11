@@ -27,6 +27,8 @@ async function loginUser(userData) {
         let accessToken = jsondata.data.accessToken;
         console.log(accessToken);
         localStorage.setItem("accessToken", accessToken);
+
+        window.location = "get-All-Users.html"
     }
     catch (error) {
 
