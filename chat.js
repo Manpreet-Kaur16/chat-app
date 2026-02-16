@@ -25,7 +25,7 @@ async function createChat(id) {
             headers: { Authorization: `Bearer ${accessToken}` },
         })
         let jsondata = await apiresponse.json();
-    
+
         let participants = jsondata.data.participants;
 
         let chatId = jsondata.data._id;
@@ -51,7 +51,7 @@ createChat(id);
 
 sendButtonElement.addEventListener("click", () => {
 
-    let chatId = localStorage.getItem("chatId")
+    let chatId = localStorage.getItem("chatId");
     sendMessage(chatId);
 })
 
@@ -93,7 +93,7 @@ async function getMessages() {
             })
 
         let jsonData = await apiResponse.json();
-    
+
         let messages = jsonData.data;
         displayMessages(messages);
     }
@@ -105,6 +105,10 @@ async function getMessages() {
 
 function displayMessages(messages) {
     console.log(messages);
+    let userDetail = localStorage.getItem("userDetail");
+    userDetail = JSON.parse(userDetail);
+    let userId = userDetail._id;
+    let messageId = message.sender._id;
     let html = "";
     messages.forEach((message) => {
 
@@ -119,7 +123,27 @@ function displayMessages(messages) {
  
  
          </div>`
+        
+
+
+        if (userId == messageId) {
+            console.log("this message is from my side", message.content);
+            <div class="flex justify-end">
+
+            </div>
+
+        }
+
+        else {
+            console.log(" this message is from other user", message.content);
+
+        } <div class="flex justify-start">
+
+        </div>
+
+
     })
+
     messageContainerElement.innerHTML = html;
 }
 //displayMessages(message);
