@@ -27,6 +27,8 @@ function displayOnlineUser(users) {
     if (users.length > 0) {
         noChatsYetContainerElement.classList.add("hidden");
         containerElement.innerHTML = "";
+
+
     } else {
         noChatsYetContainerElement.classList.remove("hidden");
     }

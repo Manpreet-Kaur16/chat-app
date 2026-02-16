@@ -22,13 +22,19 @@ async function loginUser(userData) {
                 },
                 body: JSON.stringify(userData),
             })
+        console.log("apiResponse here", apiresponse);
         let jsondata = await apiresponse.json();
         console.log(jsondata);
         let accessToken = jsondata.data.accessToken;
+        let userDetail = jsondata.data.user;
+        userDetail = JSON.stringify(userDetail)
+        console.log("userDetail here", userDetail);
         console.log(accessToken);
         localStorage.setItem("accessToken", accessToken);
 
-        window.location = "get-All-Users.html"
+        localStorage.setItem("userDetail", userDetail);
+
+         window.location = "get-All-Users.html"
     }
     catch (error) {
 
