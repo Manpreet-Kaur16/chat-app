@@ -8,6 +8,7 @@ let messageContainerElement = document.getElementById("messageContainer");
 let urlString = window.location.search;
 console.log("urlString", urlString);
 
+
 let urlParams = new URLSearchParams(urlString);
 const id = urlParams.get("id");
 console.log("id", id);
@@ -104,44 +105,24 @@ async function getMessages() {
 }
 
 function displayMessages(messages) {
-    console.log(messages);
+    //console.log(messages);
+    messages.reverse();
+    console.log("revesed aray", messages);
     let userDetail = localStorage.getItem("userDetail");
     userDetail = JSON.parse(userDetail);
-    let userId = userDetail._id;
-    let messageId = message.sender._id;
+
     let html = "";
     messages.forEach((message) => {
 
+        let userId = userDetail._id;
+        let messageId = message.sender._id;
+        let myMessage = userId === messageId;
+
         html += `<div class="bg-gray-50 p-3 rounded-lg">
-             <div>
-                 <h1 class="bg-gray-200 px-4 py-2 rounded-xl text-black w-[200px]">${message.content}</h1>
+             <div class="flex ${myMessage ? "justify-end" : "justify-start"} mb-2">
+                 <h1 class= "${myMessage ? "bg-gray-400 px-4 py-2 rounded-xl text-white w-[200px]" : "bg-blue-400 px-4 py-2 rounded-xl text-black w-[200px]"}">${message.content}</h1>
              </div>
- 
-             <div class="flex justify-end">
-                 <h1 class="bg-blue-600 px-4 py-2 rounded-xl text-white w-[200px]"> messages2</h1>
-             </div>
- 
- 
          </div>`
-        
-
-
-        if (userId == messageId) {
-            console.log("this message is from my side", message.content);
-            <div class="flex justify-end">
-
-            </div>
-
-        }
-
-        else {
-            console.log(" this message is from other user", message.content);
-
-        } <div class="flex justify-start">
-
-        </div>
-
-
     })
 
     messageContainerElement.innerHTML = html;
