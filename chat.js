@@ -120,11 +120,48 @@ function displayMessages(messages) {
 
         html += `<div class="bg-gray-50 p-3 rounded-lg">
              <div class="flex ${myMessage ? "justify-end" : "justify-start"} mb-2">
-                 <h1 class= "${myMessage ? "bg-gray-400 px-4 py-2 rounded-xl text-white w-[200px]" : "bg-blue-400 px-4 py-2 rounded-xl text-black w-[200px]"}">${message.content}</h1>
+                 <h1 class= "${myMessage ? "bg-gray-400 px-4 py-2 rounded-xl text-white w-[200px]" : "bg-blue-400 px-4 py-2 rounded-xl text-black w-[200px]"}">${message.content}
+                <div class=" flex justify-end ${myMessage ? "" : "hidden"}"> <button class="text-white px-2 py-1 rounded-lg" onclick="deleteMessage(event)" data-id="${(message._id)}">Delete</button><div></h1>
+
              </div>
          </div>`
     })
 
     messageContainerElement.innerHTML = html;
 }
-//displayMessages(message);
+
+async function deletemyMessage(messageId) {
+    let chatId = localStorage.getItem("chatId")
+    //let messageId = messages.message._id;
+    console.log(chatId, messageId);
+    try {
+
+        let apiResponse = await fetch(`https://api.freeapi.app/api/v1/chat-app/messages/${chatId}/${messageId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    accept: "application/json",
+                    "content-type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
+                },
+
+
+            })
+
+        getMessages();
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
+
+function deleteMessage(event) {
+    let userConsent = confirm("do you want to delete this message?");
+    console.log("this is in delete message function event handler");
+
+    if (userConsent) {
+        deletemyMessage(event.target.getAttribute("data-id"))
+    }
+}
