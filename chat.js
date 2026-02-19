@@ -70,6 +70,8 @@ async function sendMessage(chatId) {
 
                 body: JSON.stringify({ content: inputFieldElement.value })
             })
+        // inputFieldElement.value = "";
+        if (!inputFieldElement.value.trim()) return;
         getMessages();
 
     } catch (error) {
@@ -120,8 +122,8 @@ function displayMessages(messages) {
 
         html += `<div class="bg-gray-50 p-3 rounded-lg">
              <div class="flex ${myMessage ? "justify-end" : "justify-start"} mb-2">
-                 <h1 class= "${myMessage ? "bg-gray-400 px-4 py-2 rounded-xl text-white w-[200px]" : "bg-blue-400 px-4 py-2 rounded-xl text-black w-[200px]"}">${message.content}
-                <div class=" flex justify-end ${myMessage ? "" : "hidden"}"> <button class="text-white px-2 py-1 rounded-lg" onclick="deleteMessage(event)" data-id="${(message._id)}">Delete</button><div></h1>
+                 <h1 class= "${myMessage ? "bg-blue-400 px-4 py-2 rounded-xl text-white w-[200px]" : "bg-gray-400 px-4 py-2 rounded-xl text-black w-[200px]"}">${message.content}
+                <div class=" flex justify-end ${myMessage ? "" : "hidden"}"> <button class="text-white px-2 py-1 rounded-lg" onclick="deleteMessage(event)" data-id="${(message._id)}">Delete</button></div></h1>
 
              </div>
          </div>`
