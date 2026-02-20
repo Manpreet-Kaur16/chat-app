@@ -40,8 +40,21 @@ async function registerUser(userData) {
         }
         errorMessagesElement.innerHTML =
             `<p class="text-green-600 font-bold">Registered Successfully</p>`;
-        window.location = "login.html"
+        Toastify({
+            duration: 3000,
+            text: "User Register Successfully!!",
+            className: "info",
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            style: {
+                background: "linear-gradient(to left, #00b09b, #7f8574)",
+            }
+        }).showToast();
 
+        setTimeout(() => {
+            window.location = "login.html"
+
+        }, 2000)
         console.log("Success:", jsondata);
 
     }

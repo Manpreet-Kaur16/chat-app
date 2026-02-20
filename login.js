@@ -33,8 +33,22 @@ async function loginUser(userData) {
         localStorage.setItem("accessToken", accessToken);
 
         localStorage.setItem("userDetail", userDetail);
+        Toastify({
+            duration: 3000,
+            text: "Log in Successfull!!",
+            className: "info",
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            style: {
+                background: "linear-gradient(to left, #00b09b, #7f8574)",
+            }
+        }).showToast();
+        setTimeout(() => {
+            window.location = "get-All-Users.html"
 
-         window.location = "get-All-Users.html"
+        }, 2000)
+
+
     }
     catch (error) {
 

@@ -70,9 +70,10 @@ async function sendMessage(chatId) {
 
                 body: JSON.stringify({ content: inputFieldElement.value })
             })
-        // inputFieldElement.value = "";
+
         if (!inputFieldElement.value.trim()) return;
         getMessages();
+        inputFieldElement.value = "";
 
     } catch (error) {
         console.log(error);
@@ -163,6 +164,16 @@ function deleteMessage(event) {
     let userConsent = confirm("do you want to delete this message?");
     console.log("this is in delete message function event handler");
 
+    Toastify({
+        duration: 3000,
+        text: "Message Deleted Succesfully!!",
+        className: "info",
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        style: {
+            background: "linear-gradient(to left, #00b09b, #7f8574)",
+        }
+    }).showToast();
     if (userConsent) {
         deletemyMessage(event.target.getAttribute("data-id"))
     }
