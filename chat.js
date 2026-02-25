@@ -15,20 +15,26 @@ console.log("id", id);
 
 let accessToken = localStorage.getItem("accessToken");
 
+function apiCall(url, method = "GET", headers = {}, body = null) {
+    return fetch("https://api.freeapi.app/api/v1" + url, {
+        method: method,
+        headers: {
+            ...headers,
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`
 
+        },
+        body: body ? JSON.stringify(body) : null,
+    });
+}
 
 async function createChat(id) {
 
     try {
-        let apiresponse = await fetch(`https://api.freeapi.app/api/v1/chat-app/chats/c/${id}`, {
-
-            method: "POST",
-            headers: { Authorization: `Bearer ${accessToken}` },
-        })
+        let apiresponse = await apiCall(`/chat-app/chats/c/${id}`, "POST");
         let jsondata = await apiresponse.json();
-
         let participants = jsondata.data.participants;
-
         let chatId = jsondata.data._id;
 
         localStorage.setItem("chatId", chatId);
@@ -52,24 +58,18 @@ createChat(id);
 
 sendButtonElement.addEventListener("click", () => {
 
-    let chatId = localStorage.getItem("chatId");
-    sendMessage(chatId);
+
+    sendMessage();
 })
 
-async function sendMessage(chatId) {
+async function sendMessage() {
     try {
 
-        let apiResponse = await fetch(`https://api.freeapi.app/api/v1/chat-app/messages/${chatId}`,
-            {
-                method: "POST",
-                headers: {
-                    accept: "application/json",
-                    "content-type": "application/json",
-                    Authorization: `Bearer ${accessToken}`
-                },
+        let chatId = localStorage.getItem("chatId");
+        let apiResponse = await apiCall(`/chat-app/messages/${chatId}`, "POST",
+            {},
+            { content: inputFieldElement.value },)
 
-                body: JSON.stringify({ content: inputFieldElement.value })
-            })
 
         if (!inputFieldElement.value.trim()) return;
         getMessages();
@@ -85,16 +85,8 @@ async function getMessages() {
     let chatId = localStorage.getItem("chatId")
     try {
 
-        let apiResponse = await fetch(`https://api.freeapi.app/api/v1/chat-app/messages/${chatId}`,
-            {
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                    "content-type": "application/json",
-                    Authorization: `Bearer ${accessToken}`
-                },
-
-            })
+        let apiResponse = await apiCall(`/chat-app/messages/${chatId}`, "GET",
+            {},)
 
         let jsonData = await apiResponse.json();
 
@@ -135,21 +127,11 @@ function displayMessages(messages) {
 
 async function deletemyMessage(messageId) {
     let chatId = localStorage.getItem("chatId")
-    //let messageId = messages.message._id;
     console.log(chatId, messageId);
     try {
 
-        let apiResponse = await fetch(`https://api.freeapi.app/api/v1/chat-app/messages/${chatId}/${messageId}`,
-            {
-                method: "DELETE",
-                headers: {
-                    accept: "application/json",
-                    "content-type": "application/json",
-                    Authorization: `Bearer ${accessToken}`
-                },
-
-
-            })
+        let apiResponse = await apiCall(`/chat-app/messages/${chatId}/${messageId}`, "DELETE",
+            {},)
 
         getMessages();
 
@@ -168,6 +150,7 @@ function deleteMessage(event) {
         duration: 3000,
         text: "Message Deleted Succesfully!!",
         className: "info",
+
         gravity: "top", // `top` or `bottom`
         position: "center", // `left`, `center` or `right`
         style: {
@@ -178,3 +161,14 @@ function deleteMessage(event) {
         deletemyMessage(event.target.getAttribute("data-id"))
     }
 }
+
+//setInterval(getMessages, 2000);
+
+inputFieldElement.addEventListener("keyup", (event) => {
+    console.log("you pressed keyboard key here", event);
+    if (event.key == "Enter") {
+        sendMessage();
+    }
+})
+
+
