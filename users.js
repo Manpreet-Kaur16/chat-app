@@ -25,9 +25,10 @@ async function getUserChat() {
 function displayDirectMessage(users) {
     let html = "";
     users.forEach(user => {
-        let username = user.participants[0].username;
+        let username = user.participants[1].username;
         let lastMessage = user.lastMessage?.content || "no message";
-        html += `<div class="flex gap-4 bg-white p-6 shadow-sm rounded-full mt-2">
+        html += `<a href="chat.html?id=${user.participants[1]._id}">
+                 <div class="flex gap-4 bg-white p-6 shadow-sm rounded-full mt-2">
                     <div
                         class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
                         <span class="text-white text-lg font-semibold">${username.charAt(0).toUpperCase()}</span>
@@ -35,11 +36,11 @@ function displayDirectMessage(users) {
                     <div class="flex flex-col">
 
                         <p class="text-gray-500 text-sm mt-1">${username}</p>
-                        <p class="text-gray-600 font-medium">DirectMessage</p>
                         <p class="text-gray-600 font-medium">${lastMessage}</p>
 
                     </div>
-                </div>`
+                </div>
+                </a>`
     }
     )
     containerElement.innerHTML = html;
